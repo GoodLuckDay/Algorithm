@@ -3,7 +3,7 @@ package 축구게임;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
-
+// 나중에 한번더 다시 보자
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {

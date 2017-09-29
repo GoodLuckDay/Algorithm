@@ -9,11 +9,9 @@ public class Main {
         N = scanner.nextInt();
         S = scanner.nextInt();
         M = scanner.nextInt();
-
         for(int i=0; i<N; i++){
             arrayList.add(scanner.nextInt());
         }
-
         queue.add(S);
         for(int i=0; i<arrayList.size(); i++){
             int qSize = queue.size();

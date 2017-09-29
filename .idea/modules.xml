@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ACMICPC/ACMICPC.iml" filepath="$PROJECT_DIR$/ACMICPC/ACMICPC.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/AlgorithmStudy.iml" filepath="$PROJECT_DIR$/.idea/AlgorithmStudy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CodegroundNote/CodegroundNote.iml" filepath="$PROJECT_DIR$/CodegroundNote/CodegroundNote.iml" />
     </modules>
   </component>
 </project>

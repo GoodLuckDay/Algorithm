@@ -2,37 +2,40 @@ package 기타리스트;
 import java.util.*;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
-    static int N, S, M;
     static Queue<Integer> queue = new LinkedList<>();
-    static ArrayList<Integer> arrayList = new ArrayList<>();
+    static int N, S, M;
     public static void main(String[] args) {
         N = scanner.nextInt();
         S = scanner.nextInt();
         M = scanner.nextInt();
+        int[][] d = new int[N+1][M+1];
+
         for(int i=0; i<N; i++){
-            arrayList.add(scanner.nextInt());
+            queue.add(scanner.nextInt());
+            Arrays.fill(d[i],-1);
         }
-        queue.add(S);
-        for(int i=0; i<arrayList.size(); i++){
-            int qSize = queue.size();
-            for(int j=0; j<qSize;j++) {
-                int temp = queue.poll();
-                int plusValue = temp + arrayList.get(i);
-                int minusValue = temp - arrayList.get(i);
-                if (plusValue >= 0 && plusValue <= M) {
-                    queue.add(plusValue);
-                }
-                if(minusValue >= 0 && minusValue <= M){
-                    queue.add(minusValue);
+
+        d[0][S] = 1;
+        for(int i=0; i<N; i++){
+            int current = queue.poll();
+            for(int k=0; k<=M; k++){
+                if(d[i][k] == 1){
+                    if(k + current <=M){
+                        d[i+1][k+current] = 1;
+                    }
+                    if(k - current >=0){
+                        d[i+1][k-current] = 1;
+                    }
                 }
             }
         }
-        int max = -1;
-        int qSize = queue.size();
-        for(int i=0; i<qSize; i++){
-            int temp = queue.poll();
-            max = Integer.max(max, temp);
+        int answer = -1;
+        for(int k=M; k>=0; k--){
+            if(d[N][k] == 1) {
+                answer = k;
+                break;
+            }
         }
-        System.out.println(max);
+        System.out.println(answer);
     }
 }

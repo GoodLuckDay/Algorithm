@@ -9,4 +9,4 @@ T = input()
 for k in range(T):
     k = input()
     n = input()
-    print apart[k][n]
+    print(apart[k][n])

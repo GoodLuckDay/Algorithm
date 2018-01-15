@@ -8,4 +8,4 @@ result[1][2]=scores[1]
 for i in range(2,T+1):
     result[i][1]=result[i-1][2]+scores[i]
     result[i][2]=max(result[i-2][1],result[i-2][2])+scores[i]
-print max(result[T])
+print(max(result[T]))

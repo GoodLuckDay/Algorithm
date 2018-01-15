@@ -7,4 +7,4 @@ for i in range(N,0,-1):
     if i%2 == 0:
         numbers[i/2] = min(numbers[i/2],numbers[i]+1)
     numbers[i - 1] = min(numbers[i - 1], numbers[i] + 1)
-print numbers[1]
+print(numbers[1])

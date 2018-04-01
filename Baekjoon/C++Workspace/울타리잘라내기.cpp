@@ -1,35 +1,72 @@
+/*
+분할 정복을 이용한 울타리 문제 해결
+맨 처음 모든 울타리 들을 확인을 하면서 완전 탐색으로 값을 구하지만 이 것은 시간이 너무 오래
+소요가 된다.
+불할 정복 사용시 빠른 시간에 문제 해결 가능
+구간을 왼쪽가 오른쪽으로 나눈 후 최대 넒이를 구하고 중간에 걸쳐 있는 지점에서의
+최대 넒이를 구한다.
+ */
 #include <iostream>
+#include <cmath>
 #include <vector>
-
 using namespace std;
 
-vector<int> h;
+int bruteForce(const vector<int>& h) {
+    int ret = 0;
+    int N = h.size();
 
-int solve(int left, int right){
-  //기저 사례 판자가 하나 밖에 없는 경우
-  if(left == right) return h[left];
-  int mid = (left + right) / 2;//2등분
-  int ret = max(solve(left, mid), solve(mid+1, right));
-
-  int lo = mid, hi = mid+1;
-  int height = min(h[lo], h[hi]);
-
-  //가운데 너비 2 부터 시작 해서 점차 너비를 증가를 시켜간다.
-  ret = max(ret, height * 2);
-
-  while(left < lo || hi < right){
-    //hi쪽의 높이가 더 크다면 hi쪽으로 너비를 증가 시키고 그 전에 height와 새로운 height를 비교를 하서 값을 갱신
-    if(hi < right && (lo == left || h[lo-1] < h[hi+1])){
-      hi++;
-      height = min(height, h[hi]);
+    for(int left=0; left<N; left++){
+        int minHeight = h[left];
+        for(int right=left; right<N; right++){
+            minHeight = min(minHeight, h[right]);
+            ret = max(ret, (right - left + 1) * minHeight);
+        }
     }
-    else{
-      lo--;
-      height = min(height, h[lo]);
-    }
-    //갱신된 구간에서의 넒이와 이전 최적값을 비교를 하여 닶을 구한다.
-    ret = max(ret, height * (hi - lo + 1));
-  }
 
-  return ret;
+    return ret;
+}
+
+int solve(const vector<int>& h, int left, int right){
+    if(left == right){
+        return h[left];
+    }
+    int mid = (left + right) / 2;
+    int ans = max(solve(h, left, mid), solve(h, mid+1, right));
+
+    int lo = mid;
+    int hi = mid+1;
+
+    int height = min(h[lo], h[hi]);
+    ans = max(ans, height * 2);
+
+    while(left < lo || hi < right ) {
+        if(hi < right && (lo == left || h[lo-1] < h[hi+1])){
+            hi++;
+            height = min(height, h[hi]);
+        }
+        else{
+            lo--;
+            height = min(height, h[lo]);
+        }
+        ans = max(ans, height * (hi - lo + 1));
+    }
+    return ans;
+}
+
+int main(){
+    vector<int> fence;
+    int C, N, count;
+
+    cin >> C;
+    for(int i=0; i<C; i++){
+        cin >> N;
+        fence.assign(N, 0);
+        for(int j=0; j<N; j++){
+            cin >> fence[j];
+        }
+//        count = bruteForce(fence);
+        count = solve(fence, 0, N-1);
+        cout << count << "\n";
+    }
+
 }

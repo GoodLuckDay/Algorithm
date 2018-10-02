@@ -26,8 +26,6 @@ public class Main {
                     cache[j][k] = -1;
                 }
             }
-
-
             bufferedWriter.write(String.valueOf(solve(0, 0))+"\n");
         }
         bufferedWriter.flush();

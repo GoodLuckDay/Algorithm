@@ -7,11 +7,10 @@ import java.util.HashSet;
 import java.util.StringTokenizer;
 
 public class Main {
-    static int count = 0;
-    static HashSet<String> hashSet;
-    static String map[][];
-    static int[] dy = {1, 0, -1, 0};
-    static int[] dx = {0, 1, 0, -1};
+    private static HashSet<String> hashSet;
+    private static String map[][];
+    private static int[] dy = {1, 0, -1, 0};
+    private static int[] dx = {0, 1, 0, -1};
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -19,7 +18,6 @@ public class Main {
         StringTokenizer stringTokenizer;
 
         for(int i=0; i<T; i++){
-            count = 0;
             map = new String[4][4];
             hashSet = new HashSet<>();
             for(int j=0; j<4; j++){

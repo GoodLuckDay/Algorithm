@@ -13,7 +13,7 @@ public class Main {
     private static String[] directions = {">", "^", "v", "<"};
     private static int[] dx = {1, 0, 0, -1};
     private static int[] dy = {0, -1, 1, 0};
-    private static final int LIMIT = 5;
+    private static final int LIMIT = 10;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

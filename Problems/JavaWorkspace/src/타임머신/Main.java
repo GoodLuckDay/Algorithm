@@ -54,7 +54,12 @@ public class Main {
             int src = scanner.nextInt();
             int dest = scanner.nextInt();
             int weight = scanner.nextInt();
-            graph[src][dest] = Integer.min(graph[src][dest],weight);
+            if(graph[src][dest] == 0){
+                graph[src][dest] = weight;
+            }
+            else{
+                graph[src][dest] = Integer.min(graph[src][dest], weight);
+            }
         }
     }
 }

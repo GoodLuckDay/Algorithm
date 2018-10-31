@@ -1,8 +1,11 @@
 package main
 
+/*
+배열 값을 복사 할 때에는 copy를 이용하여 deep copy 가능
+*/
 import (
-	"sort"
 	"fmt"
+	"sort"
 )
 
 func solution(array []int, commands [][]int) []int {
@@ -22,7 +25,7 @@ func solution(array []int, commands [][]int) []int {
 	return result
 }
 
-func main(){
-	a := solution([]int{1,5,2,6,3,7,4}, [][]int{{2,5,3},{4,4,1}, {1,7,3}})
+func main() {
+	a := solution([]int{1, 5, 2, 6, 3, 7, 4}, [][]int{{2, 5, 3}, {4, 4, 1}, {1, 7, 3}})
 	fmt.Println(a)
 }

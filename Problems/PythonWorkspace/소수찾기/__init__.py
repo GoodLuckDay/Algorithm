@@ -40,7 +40,7 @@ def solution(numbers):
 
 
 # print(solution("17"))
-print(solution("011"))기
+print(solution("011"))
 
 '''
 python permutations를 이용한 빠른 정답 구하 
